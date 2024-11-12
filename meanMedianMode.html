@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mean Median Mode</title>
+</head>
+<body>
+    <p>Mean = avg of a list of Numbers</p>
+    <p>Median = middle value in a list of numbers n/2 or avg of n/2 and n/2-1</p>
+    <p>Mode = value that apperas most frequently in a list of Numbers</p>
+    <script>
+        //functoinal programming
+        function meanMedianMode(array){
+            return {
+                mean: getMean(array),
+                median: getMedian(array),
+                mode: getMode(array) 
+            };
+        }
+        function getMean(array){
+            var sum=0;
+            array.forEach(num=>{
+                sum+=num;
+            });
+            var mean = sum/array.length;
+            return mean;
+        }
+        function getMedian(array){
+            array.sort((a,b) => a-b) ;  //sort array in asc order
+            var median;
+            if (array.length%2 !==0){
+                median = array[Math.floor(array.length/2)]; //roundoff
+            }
+            else {
+                var mid1= array[(array.length/2) -1];
+                var mid2 = array[array.length/2];
+                median = (mid1 + mid2) /2;
+            }
+            return median;
+
+        }
+        function getMode(array){
+            var modeObj={}; //hashtable in key, value pairs
+            //create modObj - takes the freq of each letter
+            array.forEach(num=> {
+                if(!modeObj[num]) modeObj[num]=0;
+                modeObj[num]++;
+            });
+            //checking the frequency
+            var maxFrequency=0;
+            var modes = [];
+            for(var num in modeObj){
+                if(modeObj[num] > maxFrequency){ 
+                    modes = [num]; 
+                    maxFrequency = modeObj[num];
+                }
+                else if (modeObj[num] == maxFrequency) modes.push(num); //if both the freq r same 
+            }
+            //if every value appears same amount of times
+            if(modes.length== Object.keys(modeObj).length) modes = [];
+            return modes;
+        }
+        console.log(meanMedianMode([2,3,4,2,2,2,3,4,5,2,2,2]));
+        
+    </script>
+</body>
+</html>

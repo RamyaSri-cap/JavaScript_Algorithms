@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seive Of Eratosthenes</title>
+</head>
+<body>
+    <p> Returns all prime numbers up to 'num' in an array</p>
+    <script>
+        function seiveOfEratosthenes(num){
+            var prime = [];
+            for(var i=0;i<=num;i++){
+                prime[i]=true;
+            }
+            prime[0] = false;
+            prime[1] = false;
+            for(var i=2; i<=Math.sqrt(num); i++){
+                for (var j=2; j*i<=num ; j++){
+                  prime[i*j] = false;  
+                }
+            }
+            var result = [];
+            for(var i=0;i<prime.length;i++){
+                if (prime[i]) result.push(i);
+            }
+            return result;
+        }
+        console.log(seiveOfEratosthenes(10));
+    </script>
+</body>
+</html>

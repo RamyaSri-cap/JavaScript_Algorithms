@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Improvized Fibonacci</title>
+</head>
+<body>
+    <p>The old one takes lot of time to run and is not a good code. Hence we Memoized it.</p>
+    <script>
+        function impFibonacci(index, cache){
+            //index: index of a number in fibonacci sequence
+            //cache: an array used as memory
+            cache = cache || [];
+            if(cache[index]) return cache[index];
+            else {
+              if (index<3) return 1;
+              else{
+                cache[index] = impFibonacci(index-1,cache) + impFibonacci(index-2, cache);
+              }  
+            }
+            return cache[index];
+        }
+        console.log(impFibonacci(50));
+    </script>
+</body>
+</html>

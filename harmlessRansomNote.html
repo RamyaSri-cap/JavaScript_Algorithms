@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harmless Ransom Note</title>
+</head>
+<body>
+    <p>Harmless Ransom Note basically have note and a magazine text. Note text - a string that is created from the words a magazine text has. Magazine text - a set of words</p>
+
+    <script>
+        function harmlessRansomNote(noteText, magazineText){ //both of them are strings and we are assuming that there are no punctuations
+    var noteArr = noteText.split(' '); //noteArr - converting string to array, split(' ') - spliting words with a space
+    var magazineArr = magazineText.split(' ');
+    var magazineObj = {}; // magazineObj = is used to figure out what and number of times a word is being repeated, we having while using a hashmap, obj - has all words in magazine arr as a property on it.
+    magazineArr.forEach(function(word){ //we now have access to each word in our magazine arr
+        //can also be written as magazineArr.foreach(word=> {....}); in a cleaner way;
+        if (!magazineObj[word]) magazineObj[word]=0; //if a word is not present, current word is 0
+        magazineObj[word]++; //incrementing the word
+        //check it till here first to see the word count by calling the function adn then proceed with validations
+    } );
+    //to check if we have necessary words in our magazine to write our note 
+    var noteIsPossible= true; //boolean var as we follow the loop if we don't have all the words then we set it to false
+    noteArr.forEach(function(word){ //check if each word is present in magazineobj, if don't have the word we cannot write the note. if the word is present in magazineobj then we have to decrement the value by one coz we used it.
+        if (magazineObj[word]){
+            magazineObj[word]--;
+            if(magazineObj[word]<0) noteIsPossible=false; //if we have enough of a word to make our note
+        }
+        else
+        noteIsPossible=false;
+    });
+    return noteIsPossible;
+}
+console.log(harmlessRansomNote('This is A note', 'This is the note that is present in the magazine'));
+    </script>
+       
+</body>
+</html>

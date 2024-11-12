@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palindrome</title>
+</head>
+<body>
+    <p>Palindrome - a string should be the same when we read it from ltr ot rtl. We achieve this using string and arrays</p>
+    <script>
+            
+            function isPalindrome(string){ //taking input as string
+            //convert all the words in our string into lower case to avoid any confusions
+            string = string.toLowerCase();
+            var charactersArr = string.split(''); //converting to a character array including spaces and punctuation marks
+            //ignoring special characters, we need an array with lower case alphabets
+            var validCharaters = 'abcdefghijklmnopqrstuvwxyz'.split(''); //contains only char we want to use to check the passed string is palindrome or not
+            //strip out any char that is not a letter by looping each array
+            var lettersArr = [];//to place letters from only charactersArr
+            charactersArr.forEach(char => {
+                if (validCharaters.indexOf(char) > -1) lettersArr.push(char); //indexOf -> is an array methiod that returns indexd in array of the arg passed in, else it gives -1
+                //lettersArr has only characters with no special characters
+
+            });
+
+            if (lettersArr.join('')=== lettersArr.reverse().join('')) return true;
+            else return false;
+        }
+        console.log(isPalindrome("Madam I'm Adam"));
+    </script>
+</body>
+</html>

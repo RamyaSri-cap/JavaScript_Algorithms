@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse words</title>
+</head>
+<body>
+    <p> Reverse each word of a string P.S. not the whole string. </p>
+    <script>
+        function reverseWords(string){
+            var wordsArr = string.split(' ');//create array of all words in a string and then string.split on every character
+            var reversedWordsArr = [];
+            wordsArr.forEach(word =>{
+                var reversedWord = '';
+                for (var i = word.length-1; i>=0;i--){ // just this will reverse the whole string instead od reversing each word  ==> dlroW olleH but we want olleH dlroW so traverse through each word
+                    reversedWord += word[i];
+                }
+                reversedWordsArr.push(reversedWord);
+            });
+            return reversedWordsArr.join(' ');
+    }
+        console.log(reverseWords("Hello World"));
+
+
+/************************************************************************************************************************************************/
+    //1 way of doing this using reverse() --->
+    // function reverseString(str){
+    //    var splitStrArr =  str.split(''); // split('') ==> ['h','e','l','l','o']; split(' ')==> ['hello'] this only reverses words not letters!
+    //    var revStr = splitStrArr.reverse();
+    //    var joinStr = revStr.join(''); //('')==> olleh ; ()==> o,l,l,e,h
+    //    return joinStr; 
+    // }
+    // console.log(reverseString("hello")); // olleh
+/***********************************************/
+    //another easy way
+    // function reverseStr(str)
+    // {
+    //     return str.split('').reverse().join('');
+    // }
+    // console.log(reverseStr("hello")); //olleh
+/***********************************************************************************************************************************************************/
+   </script>
+</body>
+</html>

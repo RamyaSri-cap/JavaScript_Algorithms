@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Two Sum</title>
+</head>
+<body>
+    <p>Finding the pairs of numbers in a given array which makes the given sum</p>
+    <script>
+       function twoSum(numArray, sum){
+        var pairs=[]; //put the output in it
+        var hashtable=[]; //using array as a hashtable to push each number with the current number counterpart is present in the table or not
+        //for eg when our cur num is 4 and the sum is 7 it's counter part is 3
+        for (var i=0; i<numArray.length; i++){
+            var currNum = numArray[i]; 
+            var counterpart = sum-currNum;
+            if(hashtable.indexOf(counterpart)!==-1){
+                pairs.push([currNum, counterpart]);
+            }
+            hashtable.push(currNum);
+        }
+        return pairs;
+       }
+       console.log(twoSum([1, 3, 4, 5, 2 ,6], 7));
+    </script>
+</body>
+</html>

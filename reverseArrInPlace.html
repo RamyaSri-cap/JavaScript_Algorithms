@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reverse Array In Place</title>
+</head>
+<body>
+    <p>This algorithm takes an array as an input an reverses the array</p>
+    <p> Here we need to manipulate the array instead of  pushing elements into the array</p>
+    <script>
+        function reverseArrayInPlace(arr){
+            for (var i=0; i<arr.length/2; i++){
+                var tempArr=arr[i];
+                arr[i]= arr[arr.length-1 - i];
+                arr[arr.length-1 - i]=tempArr;
+            }
+            return arr;
+        }
+        console.log(reverseArrayInPlace([0,1,2,3,4,5]));
+        </script>    
+</body>
+</html>
